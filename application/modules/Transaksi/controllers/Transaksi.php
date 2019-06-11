@@ -15,7 +15,7 @@ class Transaksi extends MY_Controller
 	
 
 	public function index(){
-		$data['index'] = $this->M_transaksi->tampil_data()
+		$data['index'] = $this->M_transaksi->tampil_data();
 		$data['content'] = $this->load->view('v_tampil_transaksi',$data, True);
 		$data['sidebar'] =$this->load->view('sidebar','', TRUE);
 		$this->load->view('template',$data);
