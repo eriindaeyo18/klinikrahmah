@@ -8,11 +8,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 /**
- * Description of M_Dashboard
+ * Description of Pasien
  *
  * @author casug
  */
-class M_Dashboard extends CI_Model {
+class Pasien extends MY_Controller {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('M_User');
+        $this->result = $this->M_User->Checkuser();
+    }
 
     function index() {
         

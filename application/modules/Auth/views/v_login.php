@@ -16,7 +16,7 @@
                 <div class="col-md-4">
                     <div class="card card-default card-primary">
                         <div class="card-header">
-                            <p class="text-center text-uppercase" style="cursor:default;">login system simanis</p>
+                            <p class="text-center text-uppercase" style="cursor:default;">login user klinik rahmah</p>
                         </div>
                         <div class="card-body">
                             <div class="form-group">

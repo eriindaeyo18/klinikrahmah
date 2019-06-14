@@ -24,7 +24,7 @@ class M_User extends MY_Controller {
                 ->result();
         if ($exec == false) {
             $this->session->sess_destroy();
-            redirect('Login/index', 'refresh');
+            redirect('Auth/Login', 'refresh');
         } else {
             return $exec;
         }
