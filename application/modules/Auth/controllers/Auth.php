@@ -2,32 +2,30 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller {
+class Auth extends MY_Controller {
 
     function __construct() {
         parent::__construct();
         $this->load->model(['M_login', 'M_User']);
     }
 
-    function index() {
+    function Login() {
         if ($this->session->userdata('username') == '') {
-            $this->load->View('Login/v_login');
+            $this->load->View('v_login');
         } else {
             if ($this->session->userdata('lvl') == 1) {
-                redirect('Kadin/Dashboard/index', 'refresh');
+                redirect('Dokter/Dashboard/index', 'refresh');
             } elseif ($this->session->userdata('lvl') == 2) {
-                redirect('Sekdikdas/Dashboard/index', 'refresh');
+                redirect('Administrator/Dashboard/index', 'refresh');
             } elseif ($this->session->userdata('lvl') == 3) {
-                redirect('Satlak/Dashboard/index', 'refresh');
-            } elseif ($this->session->userdata('lvl') == 4) {
-                redirect('Sekolah/Dashboard/index', 'refresh');
+                redirect('Perawat/Dashboard/index', 'refresh');
             } else {
-                $this->load->View('Login/v_login');
+                $this->load->View('v_login');
             }
         }
     }
 
-    function proses() {
+    function Proses() {
         $data = ['username' => $this->input->post('username'), 'password' => $this->input->post('password')];
         $panggil = $this->M_login->login($this->security->xss_clean($data));
         if ($panggil == true) {
@@ -47,9 +45,9 @@ class Login extends MY_Controller {
         exit;
     }
 
-    function logout() {
+    function Logout() {
         $this->session->sess_destroy();
-        redirect('Login', 'refersh');
+        redirect('Auth/Login', 'refersh');
     }
 
 }

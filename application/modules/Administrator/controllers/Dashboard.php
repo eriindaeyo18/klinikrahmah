@@ -21,7 +21,7 @@ class Dashboard extends MY_Controller {
     }
 
     function index() {
-        $data = ['title' => 'Dashboard Dokter | KLINIK RAHMAH'];
+        $data = ['title' => 'Dashboard Administrator | KLINIK RAHMAH'];
         $data['content'] = $this->load->view('v_dashboard', '', true);
         $this->load->view('template', $data);
     }

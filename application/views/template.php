@@ -18,8 +18,11 @@
     <body class="hold-transition skin-blue sidebar-mini">
         <div class=wrapper>
             <header class=main-header>
-                <a href="#" class=logo>
+                <a href="<?= base_url(''); ?>" class=logo>
                     <span class=logo-lg><b>KLINIK RAHMAH</b></span>
+                    <span class=logo-mini>
+                        <img src="<?= base_url('favicon.ico'); ?>" class="img img-thumbnail img-responsive">
+                    </span>
                 </a>
                 <nav class="navbar navbar-static-top">
                     <a href=# class=sidebar-toggle data-toggle=push-menu role=button>
@@ -37,7 +40,7 @@
                                 <ul class=dropdown-menu>
                                     <li class=user-footer>
                                         <div class=pull-right>
-                                            <a href="<?= base_url('Login/logout') ?>" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="<?= base_url('Auth/Logout') ?>" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -57,34 +60,69 @@
                             <small class="text-uppercase text-info">
                                 <?php
                                 if ($this->session->userdata('lvl') == 1) {
-                                    echo 'kepala dinas';
+                                    echo 'Dokter';
                                 } elseif ($this->session->userdata('lvl') == 2) {
-                                    echo 'Dikdas / PPLK';
+                                    echo 'Administrator';
                                 } elseif ($this->session->userdata('lvl') == 3) {
-                                    echo 'satlak';
+                                    echo 'Perawat';
                                 } else {
-                                    echo 'administrator sekolah';
+                                    echo '';
                                 }
                                 ?>
                             </small>
                         </div>
                     </div>
-                    <ul class=sidebar-menu data-widget=tree>
-                        <li class=header>MAIN NAVIGATION</li>
-                        <?php
-                        if ($this->session->userdata('lvl') == 1) {
-                            $this->load->view('sidebar_kepdin');
-                        } elseif ($this->session->userdata('lvl') == 2) {
-                            $this->load->view('sidebar_dikdas');
-                        } elseif ($this->session->userdata('lvl') == 3) {
-                            $this->load->view('sidebar_satlak');
-                        } elseif ($this->session->userdata('lvl') == 4) {
-                            $this->load->view('sidebar_os');
-                        } else {
-                            echo '';
-                        }
-                        ?>
-                    </ul>
+                    <!--=========================================================================================-->
+                    <?php
+                    $dokter = '';
+                    $admin = '';
+                    $perawat = '';
+                    if ($this->session->userdata('lvl') == 1) {
+                        $dokter = 'show';
+                        $admin = 'hidden';
+                        $perawat = 'hidden';
+                    } elseif ($this->session->userdata('lvl') == 2) {
+                        $dokter = 'hidden';
+                        $admin = 'show';
+                        $perawat = 'hidden';
+                    } elseif ($this->session->userdata('lvl') == 3) {
+                        $dokter = 'hidden';
+                        $admin = 'hidden';
+                        $perawat = 'show';
+                    } else {
+                        $dokter = 'hidden';
+                        $admin = 'hidden';
+                        $perawat = 'hidden';
+                    }
+                    ?>
+                    <div class="<?= $dokter ?>">
+                        <ul class="sidebar-menu">
+                            <li>
+                                <a href="<?= base_url("Dokter/Dashboard/index"); ?>">
+                                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="<?= $admin ?>">
+                        <ul class="sidebar-menu">
+                            <li>
+                                <a href="<?= base_url("Administrator/Dashboard/index"); ?>">
+                                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="<?= $perawat ?>">
+                        <ul class="sidebar-menu">
+                            <li>
+                                <a href="<?= base_url("Perawat/Dashboard/index"); ?>">
+                                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--=========================================================================================-->
                 </section>
             </aside>
             <!--=====================================================================================================-->
@@ -95,7 +133,7 @@
             </div>
             <!--=====================================================================================================-->
             <footer class=main-footer>
-                <strong>Copyright &copy; 2019 <a href="#">Ari Pratitasari</a>.</strong>
+                <strong>Copyright &copy; 2019 <a href="#">Klinik Rahmah</a>.</strong>
             </footer>
         </div>
         <script src=<?= base_url('assets/css/bower_components/jquery/dist/jquery.min.js') ?>></script>
