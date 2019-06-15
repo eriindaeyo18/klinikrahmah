@@ -16,12 +16,17 @@ class Pasien extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('M_User');
+        $this->load->model(array('M_User' => 'M_User', 'M_Pasien' => 'M_Pasien'));
         $this->result = $this->M_User->Checkuser();
     }
 
     function index() {
-        
+        $data = [
+            'title' => 'Data Pasien | KLINIK RAHMAH',
+            'value' => $this->M_Pasien->index()
+        ];
+        $data['content'] = $this->load->view('V_Pasien', $data, true);
+        $this->load->view('template', $data);
     }
 
 }

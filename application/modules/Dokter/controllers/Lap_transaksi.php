@@ -16,13 +16,13 @@ class Lap_transaksi extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('M_User');
-        $this->result = $this->M_User->Checkuser();
+        $this->load->model(['M_User' => 'Auth', 'M_Lap_transaksi' => 'trans']);
+        $this->result = $this->Auth->Checkuser();
     }
 
     function index() {
-        $data = ['title' => 'Dashboard Dokter | KLINIK RAHMAH'];
-        $data['content'] = $this->load->view('v_dashboard', '', true);
+        $data = ['title' => 'Dashboard Dokter | KLINIK RAHMAH', 'value' => $this->trans->index()];
+        $data['content'] = $this->load->view('V_Lap_transaksi', $data, true);
         $this->load->view('template', $data);
     }
 

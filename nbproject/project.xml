@@ -6,9 +6,12 @@
             <name>klinikrahmah</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>harga</word>
             <word>klinik</word>
+            <word>obat</word>
             <word>Pasien</word>
             <word>rahmah</word>
+            <word>umur</word>
         </spellchecker-wordlist>
     </configuration>
 </project>
