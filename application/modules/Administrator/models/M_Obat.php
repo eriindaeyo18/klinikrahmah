@@ -18,8 +18,16 @@ class M_Obat extends CI_Model {
         return $this->db->select()->from('obat')->get()->result();
     }
 
-    function Tambah() {
-        return true;
+    function Tambah($data) {
+        $this->db->trans_begin();
+        $this->db->insert('obat', $data);
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
     }
 
     function Edit($data) {
