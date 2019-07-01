@@ -32,7 +32,7 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         <label class="text-uppercase">status</label>
-                        <select class="form-control text-uppercase" name="jkel" required="">
+                        <select class="form-control text-uppercase" name="menikah" required="">
                             <option value="">status perkawinan</option>
                             <option value="1">menikah</option>
                             <option value="2">belum menikah</option>
