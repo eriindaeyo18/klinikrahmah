@@ -9,8 +9,8 @@
         <link rel=stylesheet href=<?= base_url('assets/css/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>>
         <link rel=stylesheet href=<?= base_url('assets/css/bower_components/font-awesome/css/font-awesome.min.css') ?>>
         <link rel=stylesheet href=<?= base_url('assets/css/bower_components/Ionicons/css/ionicons.min.css') ?>>
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.7/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.css"/>
-        <link rel=stylesheet href="<?= base_url('assets/css/bootstrap-datepicker.min.css'); ?>">
+        <link rel=stylesheet href=<?= base_url('assets/css/datatables.min.css') ?>>
+        <link rel=stylesheet href="<?= base_url('assets/css/bootstrap-datetimepicker.min.css'); ?>">
         <link rel=stylesheet href="<?= base_url('assets/css/AdminLTE.min.css') ?>">
         <link rel=stylesheet href="<?= base_url('assets/css/skins/_all-skins.min.css'); ?>">
         <link rel=stylesheet href="<?= base_url('assets/css/font.css'); ?>">
@@ -31,8 +31,8 @@
                     <div class=navbar-custom-menu>
                         <ul class="nav navbar-nav">
                             <li class="dropdown user user-menu">
-                                <a href=# class=dropdown-toggle data-toggle=dropdown>
-                                    <img src=<?= base_url('assets/img/user2-160x160.jpg') ?> class=user-image alt="User Image">
+                                <a href=# class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="<?= base_url('assets/img/user2-160x160.jpg') ?>" class="user-image">
                                     <span class="hidden-xs text-uppercase">
                                         <?= $this->session->userdata('username'); ?>
                                     </span>
@@ -127,6 +127,26 @@
                                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?= base_url("Administrator/Pasien/index"); ?>">
+                                    <i class="glyphicon glyphicon-user"></i> <span>Pasien</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("Administrator/Transaksi/index"); ?>">
+                                    <i class="glyphicon glyphicon-file"></i> <span>Transaksi</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("Administrator/R_Medis/index"); ?>">
+                                    <i class="glyphicon glyphicon-list-alt"></i> <span>Rekam Medis</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?= base_url("Administrator/Obat/index"); ?>">
+                                    <i class="glyphicon glyphicon-plus"></i> <span>Obat</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!--=========================================================================================-->
@@ -155,14 +175,13 @@
         </div>
         <script src=<?= base_url('assets/css/bower_components/jquery/dist/jquery.min.js') ?>></script>
         <script src=<?= base_url('assets/css/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>></script>
+        <script src="<?= base_url('assets/js/moment.min.js');?>" type="text/javascript"></script>
         <script src=<?= base_url('assets/js/adminlte.min.js') ?>></script>
         <script src=<?= base_url('assets/css/bower_components/fastclick/lib/fastclick.js') ?>></script>
         <script src=<?= base_url('assets/css/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') ?>></script>
         <script src=<?= base_url('assets/css/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') ?>></script>
+        <script src=<?= base_url('assets/js/datatables.min.js') ?>></script>
         <script src=<?= base_url('assets/css/bower_components/chart.js/Chart.js') ?>></script>
-        <script src=<?= base_url('assets/js/bootstrap-datepicker.min.js'); ?>></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
+        <script src=<?= base_url('assets/js/bootstrap-datetimepicker.min.js'); ?>></script>
     </body>
 </html>

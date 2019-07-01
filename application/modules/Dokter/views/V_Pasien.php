@@ -29,8 +29,16 @@
                                 }
                                 ?>
                             </td>
-                            <td class="text-uppercase"><?= $value->umur ?></td>
-                            <td class="text-uppercase"><?= $value->status ?></td>
+                            <td class="text-uppercase text-center"><?= $value->umur ?></td>
+                            <td class="text-uppercase">
+                                <?php
+                                if ($value->status == 1) {
+                                    echo 'Menikah';
+                                } else {
+                                    echo 'Belum Menikah';
+                                }
+                                ?>
+                            </td>
                             <td><?= $value->Alamat ?></td>
                         </tr>
                     <?php } ?>

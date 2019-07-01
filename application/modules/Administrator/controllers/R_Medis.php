@@ -8,21 +8,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 /**
- * Description of Dashboard
+ * Description of R_Medis
  *
  * @author casug
  */
-class Dashboard extends MY_Controller {
+class R_Medis extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model(['M_User' => 'M_User']);
+        $this->load->model(['M_User' => 'M_User', 'M_Medis' => 'M_Medis']);
         $this->result = $this->M_User->Checkuser();
     }
 
     function index() {
-        $data = ['title' => 'Dashboard Administrator | KLINIK RAHMAH'];
-        $data['content'] = $this->load->view('v_dashboard', $data, true);
+        $data = ['title' => 'Rekam Medis | KLINIK RAHMAH', 'formtitle' => '', 'value' => $this->M_Medis->tampil_data()];
+        $data['content'] = $this->load->view('v_tampil_rekammedis', $data, true);
         $this->load->view('template', $data);
     }
 

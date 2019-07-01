@@ -58,6 +58,31 @@
                 <div class="col-md-4"></div>
             </div>
         </div>
+        <script>
+            /*! login js by bodo gila website | maspriyambodo.co.id */
+            function showpwd() {
+                switch (document.getElementById("pwdtxt").type) {
+                    case"password":
+                        document.getElementById("pwdtxt").type = "text", $(".showpwd").removeClass("fas fa-eye"), $(".showpwd").addClass("fas fa-eye-slash");
+                        break;
+                        case"text":
+                        document.getElementById("pwdtxt").type = "password", $(".showpwd").removeClass("fas fa-eye-slash"), $(".showpwd").addClass("fas fa-eye")
+                        }
+            }
+            function login() {
+                var e, s;
+                e = $("input[name=username]").val(), s = $("input[name=password]").val(), "" == e ? ($("#msguname").show("slow"), document.getElementById("msguname").innerHTML = "Masukkan username !", $("#msguname").delay(3e3).hide("slow")) : "" == s ? ($("#msgpwd").show("slow"), document.getElementById("msgpwd").innerHTML = "Masukkan password !", $("#msgpwd").delay(3e3).hide("slow")) : $.ajax({async: !1, type: "POST", url: "https://localhost/klinikrahmah/Auth/proses/", data: {username: e, password: s}, statusCode: {200: function (e) {
+                            1 == e.lvl ? window.location.href = "https://localhost/klinikrahmah/Dokter/Dashboard/index" : 2 == e.lvl ? window.location.href = "https://localhost/klinikrahmah/Administrator/Dashboard/index" : 3 == e.lvl && (window.location.href = "https://localhost/klinikrahmah/Perawat/Dashboard/index")
+                        }, 201: function (e) {
+                            $("#errmsg").show("slow"), document.getElementById("errmsg").innerHTML = e.message, $("#errmsg").delay(3500).hide("slow")
+                        }}})
+            }
+            document.addEventListener("keypress", function onEvent(event) {
+                if (event.key === "Enter") {
+                    login();
+                }
+            });
+        </script>
         <script type="text/javascript" src="<?= base_url('assets/css/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>

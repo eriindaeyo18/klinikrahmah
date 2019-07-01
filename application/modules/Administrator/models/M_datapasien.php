@@ -5,12 +5,10 @@ defined('BASEPATH') or exit('NO DIRECT SCRIPT ALLOWED');
 /**
  * 
  */
-class M_obat extends CI_Model {
+class M_datapasien extends CI_Model {
 
     function tampil_data() {
-        return $this->db->select('*')
-                        ->from('Obat')
-                        ->get();
+        return $this->db->select('*')->from('pasien')->get()->result();
     }
 
     function input_data($data, $table) {

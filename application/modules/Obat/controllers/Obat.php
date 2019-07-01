@@ -9,11 +9,10 @@ class Obat extends MY_Controller
 	
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('M_obat');
+		$this->load->model('M_Obat');
 
 	}
-	
-
+	 
 	public function index(){
 		$data['index'] = $this->M_obat->tampil_data()->result();
 		$data['content'] = $this->load->view('v_tampil_obat',$data, True);
@@ -30,25 +29,24 @@ class Obat extends MY_Controller
 
 	function tambah_aksi(){
 		$nama_obat = $this->input->post('nama_obat');
-		$Stok = $this->input->post('Stok');
-		$Harga = $this->input->post('Harga');
-		
+		$stok = $this->input->post('stok');
+		$harga = $this->input->post('harga');		
 
 	$data = array(
 		'nama_obat' => $nama_obat,
-		'Stok' => $Stok, 
-		'Harga' => $Harga,
+		'stok' => $stok, 
+		'harga' => $harga,
 	
 	);
 
-	$this->M_Obat->input_data($data,'Obat');
+	$this->M_datapasien->input_data($data,'Obat');
 	redirect('Obat/index');
 
 	}
 
 	function delete(){
-		$where = array('id' => $id);
-		$this->M_Obat->hapus_data($where,'Obat');
+		$where = array('id_obat' => $id_obat);
+		$this->M_Datapasien->hapus_data($where,'Obat');
 		redirect('Obat/index');
 
 	}

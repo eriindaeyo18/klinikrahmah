@@ -2,7 +2,7 @@
 	<center><h1></tr></h1></center>
 	<center><?php echo anchor('Transaksi/tambah','Tambah Data'); ?></center>
 	<table style="margin:25px auto;" class="table table-bordered" border="1">
-		<thead style="background: ;" ><tr>
+		<thead><tr>
 			<th>No.</th>
 			<th>Nama Pasien</th>
 			<th>Tanggal Perawatan</th>

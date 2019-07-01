@@ -11,11 +11,11 @@
                 <td><input type="text" name="nama_obat"></td>
             </tr>
             <tr>
-              <td>Harga</td>
+              <td>Stok</td>
               <td><input type="text" name="Harga"></td>
             </tr>
             <tr>
-              <td></td>
+              <td>Harga</td>
               <td><input type="submit" value="tambah"></td>
             </tr>
       </table>

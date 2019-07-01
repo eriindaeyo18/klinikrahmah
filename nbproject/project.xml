@@ -6,11 +6,29 @@
             <name>klinikrahmah</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>alamat</word>
+            <word>anamnesa</word>
+            <word>batal</word>
+            <word>Dokter</word>
             <word>harga</word>
+            <word>jumlah</word>
+            <word>kelamin</word>
             <word>klinik</word>
+            <word>lahir</word>
+            <word>laki</word>
+            <word>menikah</word>
+            <word>nama</word>
             <word>obat</word>
             <word>Pasien</word>
+            <word>pekerjaan</word>
+            <word>perempuan</word>
+            <word>perkawinan</word>
             <word>rahmah</word>
+            <word>satuan</word>
+            <word>simpan</word>
+            <word>stok</word>
+            <word>Tambah</word>
+            <word>transaksi</word>
             <word>umur</word>
         </spellchecker-wordlist>
     </configuration>

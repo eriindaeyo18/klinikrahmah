@@ -11,25 +11,22 @@
                 <thead>
                     <tr>
                         <th class="text-uppercase text-bold text-center text-teal">
-                            #
+                            pasien
                         </th>
                         <th class="text-uppercase text-bold text-center text-teal">
-                            nama
+                            Dokter
                         </th>
                         <th class="text-uppercase text-bold text-center text-teal">
-                            tanggal perawatan
+                            tanggal
                         </th>
                         <th class="text-uppercase text-bold text-center text-teal">
-                            Treatment
+                            anamnesa
                         </th>
                         <th class="text-uppercase text-bold text-center text-teal">
-                            obat
+                            treatment
                         </th>
                         <th class="text-uppercase text-bold text-center text-teal">
-                            harga
-                        </th>
-                        <th class="text-uppercase text-bold text-center text-teal">
-                            total
+                            action
                         </th>
                     </tr>
                 </thead>
@@ -39,26 +36,23 @@
                     foreach ($value as $value) {
                         ?>
                         <tr>
-                            <td>
-                                <?= $no++ ?>
-                            </td>
                             <td class="text-uppercase">
                                 <?= $value->nama_pasien ?>
+                            </td>
+                            <td class="text-uppercase">
+                                <?= $value->Dokter ?>
                             </td>
                             <td class="text-center text-uppercase">
                                 <?= date('Y-m-d', strtotime($value->tgl_periksa)) ?>
                             </td>
-                            <td class="text-center text-uppercase">
+                            <td class="text-uppercase">
+                                <?= $value->anamnesa ?>
+                            </td>
+                            <td class="text-uppercase">
                                 <?= $value->treatment ?>
                             </td>
-                            <td>
-                                <?= $value->nama_obat ?>
-                            </td>
-                            <td>
-                                <?= $value->Harga ?>
-                            </td>
-                            <td>
-                                <?= $value->tot_harga ?>
+                            <td class="text-center">
+                                <a href="<?= base_url('Dokter/Lap_transaksi/Detail/' . $value->id . ''); ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
