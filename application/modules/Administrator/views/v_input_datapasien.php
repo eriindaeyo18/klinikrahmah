@@ -23,8 +23,8 @@
                     </div>
                     <div class="form-group">
                         <label class="text-uppercase">tanggal lahir</label>
-                        <div class="input-group date" id="datetimepicker">
-                            <input type="text" name="lahir" class="form-control" readonly="" required="">
+                        <div class="input-group date" id="tgllahir">
+                            <input type="text" name="lahir" class="form-control" readonly="">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                         </div>
                     </div>
@@ -49,19 +49,20 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
+            <div class="form-group btn-group" role="group">
+                <button type="submit" class="btn btn-default btn-success text-uppercase">simpan</button>
+                <button type="reset" class="btn btn-default btn-danger text-uppercase">batal</button>
+            </div>
         </form>
     </div>
     <div class="panel-footer">
-        <div class="btn-group" role="group">
-            <button type="submit" class="btn btn-default btn-success text-uppercase">simpan</button>
-            <button type="reset" class="btn btn-default btn-danger text-uppercase">batal</button>
-        </div>
+
     </div>
 </div>
 <script type="text/javascript">
     window.onload = function () {
         $(function () {
-            $('#datetimepicker').datetimepicker();
+            $('#tgllahir').datetimepicker();
         });
     };
 </script>

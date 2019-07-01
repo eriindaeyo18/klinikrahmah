@@ -34,4 +34,21 @@ class Pasien extends MY_Controller {
         $this->load->view('template', $data);
     }
 
+    function Simpan() {
+        $data = [
+            'nama_pasien' => $this->input->post('nama'),
+            'jenis_kelamin' => $this->input->post('jkel'),
+            'tgl_lahir' => $this->input->post('lahir'),
+            'status' => $this->input->post('menikah'),
+            'pekerjaan' => $this->input->post('gawe'),
+            'alamat' => $this->input->post('alamat')
+        ];
+        $exec = $this->M_datapasien->Simpan($data);
+        if ($exec == true) {
+            echo '<script>alert("data pasien berhasil ditambah !");</script>';
+        } else {
+            echo '<script>alert("data pasien berhasil ditambah !");</script>';
+        }
+    }
+
 }
