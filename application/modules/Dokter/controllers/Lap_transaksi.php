@@ -26,4 +26,10 @@ class Lap_transaksi extends MY_Controller {
         $this->load->view('template', $data);
     }
 
+    function Detail($id) {
+        $data = ['title' => 'Dashboard Dokter | KLINIK RAHMAH', 'value' => $this->trans->Detail($id)];
+        $data['content'] = $this->load->view('V_detailtrans', $data, true);
+        $this->load->view('template', $data);
+    }
+
 }

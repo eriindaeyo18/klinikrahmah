@@ -21,12 +21,23 @@ class M_Lap_transaksi extends CI_Model {
                 ->join('obat', 'transaksi.id_obat = obat.id_obat', 'LEFT')
                 ->join('pasien', 'rekam_medis.id_pasien = pasien.id_pp', 'LEFT')
                 ->join('karyawan', 'rekam_medis.id_dokter = karyawan.id', 'LEFT')
-                ->where('karyawan.id', 'rekam_medis.id_dokter', false)
+                ->where('rekam_medis.id_dokter', $this->session->userdata('id'), false)
                 ->group_by('transaksi.id_rekammedis')
                 ->get()
                 ->result();
-        print_r($this->db->last_query());
-        die;
+        return $exec;
+    }
+
+    function Detail($id) {
+        $exec = $this->db->select('pasien.nama_pasien,pasien.jenis_kelamin,pasien.tgl_lahir,pasien.`status`,pasien.Pekerjaan,pasien.Alamat,rekam_medis.tgl_periksa,rekam_medis.anamnesa,rekam_medis.treatment,karyawan.nama AS dokter,karyawan.telepon,transaksi.qty,obat.nama_obat,obat.harga,(SELECT SUM(obat.harga * transaksi.qty) FROM transaksi LEFT JOIN obat ON transaksi.id_obat = obat.id_obat WHERE transaksi.id_rekammedis=' . $id . ') AS total,obat.satuan')
+                ->from('transaksi')
+                ->join('rekam_medis', 'transaksi.id_rekammedis = rekam_medis.id_rm', 'LEFT')
+                ->join('pasien', 'rekam_medis.id_pasien = pasien.id_pp', 'LEFT')
+                ->join('karyawan', 'rekam_medis.id_dokter = karyawan.id', 'LEFT')
+                ->join('obat', 'transaksi.id_obat = obat.id_obat', 'LEFT')
+                ->where('transaksi.id_rekammedis', $id, false)
+                ->get()
+                ->result();
         return $exec;
     }
 

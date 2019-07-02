@@ -7,7 +7,7 @@
             <button type="button" name="addbtn" class="btn btn-md btn-default">Add</button>
         </div>
         <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
+            <table class="table table-bordered table-hover table-striped" style="width:100%;">
                 <thead>
                     <tr>
                         <th class="text-uppercase text-bold text-center text-teal">
@@ -65,7 +65,6 @@
     window.onload = function () {
         $('.table').DataTable({
             "dom": 'lBfrtip',
-            "scrollY": "200px",
             responsive: true
         });
     };
