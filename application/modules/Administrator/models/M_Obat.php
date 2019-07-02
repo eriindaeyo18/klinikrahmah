@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Obat extends CI_Model {
 
     function index() {
-        return $this->db->select()->from('obat')->get()->result();
+        return $this->db->select()->from('obat')->where('stat', 1)->get()->result();
     }
 
     function Tambah($data) {
@@ -38,6 +38,20 @@ class M_Obat extends CI_Model {
     function Update($data) {
         $this->db->trans_begin();
         $this->db->set(['nama_obat' => $data['nama_obat'], 'stok' => $data['stok'], 'satuan' => $data['satuan'], 'harga' => $data['harga']]);
+        $this->db->where('id_obat', $data['id_obat']);
+        $this->db->update('obat');
+        if ($this->db->trans_status() === FALSE) {
+            $this->db->trans_rollback();
+            return false;
+        } else {
+            $this->db->trans_commit();
+            return true;
+        }
+    }
+
+    function Hapus($data) {
+        $this->db->trans_begin();
+        $this->db->set(['stat' => 2, 'sysdeleteuser' => $this->session->userdata('id'), 'sysdeletedate' => date("Y-m-d H:i:s")]);
         $this->db->where('id_obat', $data['id_obat']);
         $this->db->update('obat');
         if ($this->db->trans_status() === FALSE) {

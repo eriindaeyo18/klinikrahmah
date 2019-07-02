@@ -66,7 +66,10 @@
     window.onload = function () {
         $('.table').DataTable({
             "dom": 'lBfrtip',
-            responsive: true
+            responsive: true,
+            buttons: [
+                'colvis','copy', 'excel', 'pdf','csv','print'
+            ]
         });
         $('[data-toggle="tooltip"]').tooltip();
     };

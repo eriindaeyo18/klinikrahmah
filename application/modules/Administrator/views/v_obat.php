@@ -60,7 +60,7 @@
                         <td class="text-center">
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-xs btn-default" data-toggle="modal" data-target="#editModal" onclick="edit(<?= $obat->id_obat ?>)"><i class="glyphicon glyphicon-edit"></i></button>
-                                <button type="button" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                                <button type="button" class="btn btn-xs btn-danger" onclick="hapus(<?= $obat->id_obat; ?>)" data-toggle="modal" data-target="#hapusModal"><i class="glyphicon glyphicon-trash"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -98,12 +98,32 @@
                                 </div>
                             </div>
                             <div class="form-group" style="clear:both;margin:10px 0px;">
-                                <div class="btn-group" role="group" aria-label="...">
+                                <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edit data obat</h4>
+                    </div>
+                    <div class="modal-body" id="msg">
+                        <input type="hidden" name="modalobat">
+                        <p id="msgobat"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default text-uppercase" data-dismiss="modal">tidak</button>
+                            <button type="button" class="btn btn-default text-uppercase" onclick="deleted()">ya</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,6 +181,25 @@
                 },
                 500: function () {
                     alert('Error while load data !');
+                }
+            }
+        });
+    }
+    function hapus(id) {
+        $('input[name=modalobat]').val(id);
+        document.getElementById("msgobat").innerHTML = "anda yakin ingin hapud data obat ";
+    }
+    function deleted() {
+        var a;
+        a = $('input[name=modalobat]').val();
+        $.ajax({
+            url: "<?= base_url('Administrator/Obat/Hapus/'); ?>",
+            type: 'POST',
+            data: {id_obat: a},
+            statusCode: {
+                200: function (data) {
+                    alert(data.msg);
+                    location.reload(true);
                 }
             }
         });

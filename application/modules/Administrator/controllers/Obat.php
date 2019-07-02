@@ -78,4 +78,22 @@ class Obat extends MY_Controller {
         }
     }
 
+    function Hapus() {
+        $data = [
+            'id_obat' => $this->input->post('id_obat')
+        ];
+        $exec = $this->M_Obat->Hapus($data);
+        if ($exec == true) {
+            $response = ['status' => 200, 'msg' => 'Success, data obat berhasil dihapus'];
+        } else {
+            $response = ['status' => 201, 'msg' => 'Error, while deleting data !'];
+        }
+        $this->output
+                ->set_status_header($response['status'])
+                ->set_content_type('application/json', 'utf-8')
+                ->set_output(json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+                ->_display();
+        exit;
+    }
+
 }
