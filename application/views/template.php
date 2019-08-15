@@ -117,6 +117,11 @@
                                     <i class="fa fa-file"></i> <span>Laporan</span>
                                 </a>
                             </li>
+                            <li>
+                            <a href="<?= base_url("Dokter/Lap_transaksi/Bulanan"); ?>">
+                                    <i class="fa fa-file"></i> <span>Laporan Bulanan</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!--=========================================================================================-->

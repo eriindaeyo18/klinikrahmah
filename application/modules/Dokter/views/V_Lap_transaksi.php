@@ -52,9 +52,9 @@
                                 <?= $value->treatment ?>
                             </td>
                             <td class="text-center">
-                                <a href="<?= base_url('Dokter/Lap_transaksi/Detail/' . $value->id . ''); ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                <a href="<?= base_url('Dokter/Lap_transaksi/Detail/' . $value->rm . ''); ?>" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>
                             </td>
-                        </tr>
+                        </tr>   
                     <?php } ?>
                 </tbody>
             </table>

@@ -31,5 +31,12 @@ class Lap_transaksi extends MY_Controller {
         $data['content'] = $this->load->view('V_detailtrans', $data, true);
         $this->load->view('template', $data);
     }
+    function lapBulanan(){
+       
+            $data = ['title' => 'Dashboard Dokter | KLINIK RAHMAH', 'value' => $this->trans->Bulanan()];
+            $data['content'] = $this->load->view('v_lapBulanan', $data, true);
+            // var_dump($data);
+            $this->load->view('template', $data);
+    }
 
 }

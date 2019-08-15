@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_Lap_transaksi extends CI_Model {
 
     function index() {
-        $exec = $this->db->select('transaksi.id,pasien.nama_pasien,karyawan.nama AS Dokter,rekam_medis.tgl_periksa,rekam_medis.anamnesa,rekam_medis.treatment,obat.nama_obat,transaksi.qty,obat.harga')
+        $exec = $this->db->select('transaksi.id, transaksi.id_rekammedis as rm, pasien.nama_pasien,karyawan.nama AS Dokter,rekam_medis.tgl_periksa,rekam_medis.anamnesa,rekam_medis.treatment,obat.nama_obat,transaksi.qty,obat.harga')
                 ->from('transaksi')
                 ->join('rekam_medis', 'transaksi.id_rekammedis = rekam_medis.id_rm', 'LEFT')
                 ->join('obat', 'transaksi.id_obat = obat.id_obat', 'LEFT')
@@ -35,10 +35,19 @@ class M_Lap_transaksi extends CI_Model {
                 ->join('pasien', 'rekam_medis.id_pasien = pasien.id_pp', 'LEFT')
                 ->join('karyawan', 'rekam_medis.id_dokter = karyawan.id', 'LEFT')
                 ->join('obat', 'transaksi.id_obat = obat.id_obat', 'LEFT')
-                ->where('transaksi.id_rekammedis', $id, false)
+                ->where('transaksi.id_rekammedis', $id)
                 ->get()
                 ->result();
         return $exec;
+    }
+    public function Bulanan(){
+        $data = $this->db->select('concat(MONTHNAME(b.tgl_periksa), " " ,Year(b.tgl_periksa)) as "tahun/bulan", MONTHNAME(b.tgl_periksa) as bulan, Year(b.tgl_periksa) as tahun,  sum(c.harga*a.qty) as total_pendapatan')
+                        ->from('transaksi a')
+                        ->join('rekam_medis b','a.id_rekammedis = b.id_rm', 'LEFT')
+                        ->join('obat c', 'a.id_obat = c.id_obat','Left')
+                        ->group_by('concat(MONTHNAME(b.tgl_periksa), " " ,Year(b.tgl_periksa))')
+                        ->get();
+        return $data->result();
     }
 
 }
