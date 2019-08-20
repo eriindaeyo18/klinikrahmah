@@ -162,6 +162,17 @@
                                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?= base_url("Administrator/R_Medis/index"); ?>">
+                                    <i class="glyphicon glyphicon-list-alt"></i> <span>Rekam Medis</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="<?= base_url("Administrator/Transaksi/index"); ?>">
+                                    <i class="glyphicon glyphicon-file"></i> <span>Transaksi</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!--=========================================================================================-->
